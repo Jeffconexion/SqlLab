@@ -200,3 +200,151 @@ JOIN Diretor
 ON Filme.Id_Diretor = Diretor.Id
 
 --Filtrando as tabelas unidas
+
+SELECT F.ID, F.TITULO, F.ANO_PRODUCAO, F.ID_DIRETOR, D.ID, D.NOME, D.ANO_NASCIMENTO
+FROM Filme F
+JOIN Diretor D
+ON F.Id_Diretor = D.Id
+WHERE F.ANO_PRODUCAO > 2000
+
+-- Filtrando as tabelas unidas - Continuação
+SELECT F.ID, F.TITULO, F.ANO_PRODUCAO, F.ID_DIRETOR, D.ID, D.NOME, D.ANO_NASCIMENTO
+FROM FILME F
+JOIN DIRETOR D
+ON F.Id_Diretor = D.Id
+WHERE D.Nome = 'Steven Spielberg'
+
+-- * Pratique seus conhecimentos
+SELECT F.TITULO, F.ANO_PRODUCAO, D.NOME, D.ANO_NASCIMENTO AS NASCIDO_EM
+FROM FILME F
+JOIN DIRETOR D
+ON F.Id_Diretor = D.Id
+WHERE (F.Ano_Producao - D.Ano_Nascimento) < 40
+
+SELECT F.ID, F.TITULO, F.ANO_PRODUCAO AS PRODUZIDO_EM, D.NOME, D.ANO_NASCIMENTO AS NASCIDO_EM
+FROM FILME F
+JOIN DIRETOR D
+ON F.Id_Diretor = D.Id
+WHERE 
+(F.Titulo LIKE '%a%') AND (F.Ano_Producao > 2000)
+OR
+D.Ano_Nascimento BETWEEN 1945 AND 1995
+
+-- Conheçendo as tabelas
+CREATE TABLE funcionarios (
+    departamento VARCHAR(50),
+    nome VARCHAR(50),
+    sobrenome VARCHAR(50),
+    ano INT,
+    salario DECIMAL(10, 2),
+    cargo VARCHAR(50)
+);
+
+INSERT INTO funcionarios (departamento, nome, sobrenome, ano, salario, cargo) VALUES
+('TI', 'Olivia', 'Pereira', 2011, 3000, 'Estagiário'),
+('TI', 'Olivia', 'Pereira', 2012, 3000, 'Estagiário'),
+('TI', 'Olivia', 'Pereira', 2012, 4200, 'Desenvolvedor Júnior'),
+('TI', 'Olivia', 'Pereira', 2013, 4900, 'Desenvolvedor Júnior'),
+('TI', 'Olivia', 'Pereira', 2014, 8100, 'Desenvolvedor Sênior'),
+('Administração', 'Jonas', 'Junqueira', 2011, 4300, 'Gerente de Projetos Júnior'),
+('Administração', 'Jonas', 'Junqueira', 2012, 5100, 'Gerente de Projetos'),
+('Administração', 'Jonas', 'Junqueira', 2013, 7200, 'Gerente de Projetos Sênior'),
+('Administração', 'Jonas', 'Junqueira', 2014, 7600, 'Gerente de Projetos Sênior'),
+('Administração', 'Jonas', 'Junqueira', 2015, 9500, 'Chefe de Departamento'),
+('TI', 'Hugo', 'Toledo', 2015, 2700, 'Estagiário'),
+('Recursos Humanos', 'Livia', 'Borba', 2013, 1900, 'Especialista Júnior de RH'),
+('Recursos Humanos', 'Livia', 'Borba', 2014, 2300, 'Especialista de RH'),
+('Recursos Humanos', 'Livia', 'Borba', 2015, 3650, 'Especialista Sênior de RH'),
+('Contabilidade', 'Carlos', 'Junqueira', 2010, 2000, 'Contador Júnior'),
+('Contabilidade', 'Carlos', 'Junqueira', 2011, 2000, 'Contador Júnior'),
+('Contabilidade', 'Carlos', 'Junqueira', 2012, 2500, 'Contador'),
+('Contabilidade', 'Carlos', 'Junqueira', 2013, 3200, 'Contador'),
+('Contabilidade', 'Carlos', 'Junqueira', 2014, 3700, 'Contador Sênior'),
+('Contabilidade', 'Carlos', 'Junqueira', 2015, 4200, 'Contador Sênior'),
+('TI', 'Jacó', 'Reis', 2013, 3400, 'Estagiário'),
+('TI', 'Jacó', 'Reis', 2014, 4100, 'Desenvolvedor Júnior'),
+('TI', 'Jacó', 'Reis', 2015, 5900, 'Desenvolvedor'),
+('Contabilidade', 'Jessica', 'Piaz', 2014, 3800, 'Contador Sênior'),
+('Contabilidade', 'Jessica', 'Piaz', 2015, 4300, 'Contador Sênior'),
+('Administração', 'Ethan', 'Bastos', 2013, 5100, 'Gerente de Projetos'),
+('Administração', 'Ethan', 'Bastos', 2014, 5900, 'Gerente de Projetos'),
+('Administração', 'Ethan', 'Bastos', 2015, 6300, 'Gerente de Projetos Sênior'),
+('Central de Ajuda', 'Emilia', 'Vargas', 2013, 1400, 'Estagiário'),
+('Central de Ajuda', 'Emilia', 'Vargas', 2014, 1900, 'Assistente de Atendimento ao Cliente'),
+('Central de Ajuda', 'Emilia', 'Vargas', 2015, 2300, 'Assistente de Atendimento ao Cliente'),
+('Recursos Humanos', 'Sophia', 'Conde', 2011, 2100, 'Especialista Júnior de RH'),
+('Marketing', 'Amelia', 'Romão', 2014, 2100, 'Estagiário'),
+('Marketing', 'Amelia', 'Romão', 2015, 2300, 'Especialista em CEO Júnior'),
+('Marketing', 'Lúcia', 'Verdini', 2013, 2000, 'Estagiário'),
+('Marketing', 'Rúbia', 'Chagas', 2012, 2500, 'Estagiário'),
+('Marketing', 'Rúbia', 'Chagas', 2013, 3400, 'Especialista em CEO Júnior'),
+('Marketing', 'Rúbia', 'Chagas', 2014, 3900, 'Especialista em CEO'),
+('Marketing', 'Rúbia', 'Chagas', 2015, 5400, 'Especialista em CEO Sênior'),
+('null', 'Amália', 'Wagner', NULL, NULL, NULL),
+('Central de Ajuda', 'Breno', 'Mafra', 2012, 1500, 'Estagiário'),
+('Central de Ajuda', 'Breno', 'Mafra', 2013, 2000, 'Assistente de Atendimento ao Cliente'),
+('Central de Ajuda', 'Breno', 'Mafra', 2014, 2500, 'Assistente de Atendimento ao Cliente'),
+('Central de Ajuda', 'Breno', 'Mafra', 2015, 3700, 'Especialista em Atendimento ao Cliente'),
+('Administração', 'Eva', 'Santos', 2011, 2100, 'Estagiário'),
+('Administração', 'Eva', 'Santos', 2012, 4100, 'Gerente de Projetos Júnior'),
+('Administração', 'Eva', 'Santos', 2013, 4600, 'Gerente de Projetos Júnior'),
+('Administração', 'Eva', 'Santos', 2014, 5300, 'Gerente de Projetos'),
+('Administração', 'Eva', 'Santos', 2015, 6100, 'Gerente de Projetos Sênior');
+
+
+SELECT departamento, nome, sobrenome, ano, salario, cargo
+FROM funcionarios
+
+--Ordene as linhas - ORDER BY
+SELECT DEPARTAMENTO, NOME, SOBRENOME, ANO, SALARIO, CARGO
+FROM funcionarios
+ORDER BY SALARIO 
+
+SELECT DEPARTAMENTO, NOME, SOBRENOME, ANO, SALARIO, CARGO
+FROM funcionarios
+ORDER BY SALARIO ASC
+
+SELECT DEPARTAMENTO, NOME, SOBRENOME, ANO, SALARIO, CARGO
+FROM funcionarios
+ORDER BY SALARIO DESC
+
+--ORDER BY com condições
+
+SELECT departamento, nome, sobrenome, ano, salario, cargo
+FROM funcionarios
+WHERE
+ANO = 2011
+ORDER BY salario
+
+--Ordem ascendente e descendente
+SELECT DEPARTAMENTO, NOME, SOBRENOME, ANO, SALARIO, CARGO
+FROM funcionarios
+ORDER BY SOBRENOME DESC
+
+-- Ordenar por algumas colunas
+SELECT DEPARTAMENTO, NOME, SOBRENOME, ANO, SALARIO, CARGO
+FROM funcionarios
+ORDER BY DEPARTAMENTO ASC, SALARIO DESC
+
+-- Resultados duplicados
+SELECT ANO
+FROM funcionarios
+ORDER BY ANO ASC
+
+--Selecione valores distintos
+SELECT DISTINCT ANO
+FROM funcionarios
+
+-- Selecione valores distintos em algumas colunas
+SELECT DISTINCT DEPARTAMENTO, CARGO
+FROM funcionarios
+
+-- Conte as linhas
+SELECT COUNT(*)
+FROM funcionarios
+
+--Conte as linhas ignorando valores NULLS
+SELECT COUNT(CARGO) AS non_null_no
+FROM funcionarios
+
+-- Conte os valores distintos em uma coluna
